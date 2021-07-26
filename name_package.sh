@@ -15,7 +15,7 @@ if [ -n "$1" ]; then
     bumpversion=$(mktemp)
     sed "s/package/$name/" .bumpversion.cfg > "$bumpversion"
     mv -vf "$bumpversion" .bumpversion.cfg
-    git diff HEAD
+    git status
 else
     echo "No name given. No changes will be made."
 fi
