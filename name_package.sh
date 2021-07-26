@@ -8,7 +8,7 @@ if [ -n "$1" ]; then
 
     new_setup=$(mktemp)
     sed "s/package_name/$name/" setup.py > "$new_setup"
-    mv -f "$new_setup" setup.py
+    mv -vf "$new_setup" setup.py
 
     mv -v ./package "./$name"
 
