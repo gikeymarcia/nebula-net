@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Mikey Garcia, @gikeymarcia
 
-env=./env
+env=./.venv
 if [ -d $env ]; then
     echo "deleting old environment"
     rm -rf $env
 fi
-python -m pip install --user virtualenv
-python -m virtualenv $env
+# python -m pip install --user virtualenv
+python -m venv $env
