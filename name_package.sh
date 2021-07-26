@@ -16,6 +16,7 @@ if [ -n "$1" ]; then
     sed "s/package/$name/" .bumpversion.cfg > "$bumpversion"
     mv -vf "$bumpversion" .bumpversion.cfg
     git status
+    tree -a -I ".venv|.git"
 else
     echo "No name given. No changes will be made."
 fi
