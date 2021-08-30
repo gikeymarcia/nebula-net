@@ -13,5 +13,17 @@ python ./setup.py sdist bdist_wheel
 # display tar contents
 tar tzf dist/*tar.gz
 
-# to upload to PyPi
-# twine upload dist/*
+# check render on PyPi
+twine check dist/*
+
+choice="$1"
+if [ -z "$choice" ]; then
+    echo "choose either: 'test' or 'pypi' to upload build."
+elif [ "$choice" == "test" ]; then
+    # upload to test.pypi.org
+    twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+elif [ "$choice" == "pypi" ]; then
+    # to upload to PyPi
+    twine upload dist/*
+fi
+
