@@ -7,13 +7,13 @@ if [ -n "$1" ]; then
     name=$1
 
     new_setup=$(mktemp)
-    sed "s/package_name/$name/" setup.py > "$new_setup"
+    sed "s/package_name/${name}/" setup.py > "$new_setup"
     mv -vf "$new_setup" setup.py
 
-    mv -v ./package "./$name"
+    mv -v ./package "./${name}"
 
     bumpversion=$(mktemp)
-    sed "s/package/$name/" .bumpversion.cfg > "$bumpversion"
+    sed "s/package/${name}/" .bumpversion.cfg > "$bumpversion"
     mv -vf "$bumpversion" .bumpversion.cfg
     git status
     tree -a -I "env|.git"
