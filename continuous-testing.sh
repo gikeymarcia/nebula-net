@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-
-# re-run all tests if any .py files change in the project
+figlet "continous TDD"
 while true; do
-    fd -e py | entr -rdc python -m pytest -v .
+    fd -e py | entr -rcd python -m pytest -vvv .
     sleep 1
 done

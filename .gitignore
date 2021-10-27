@@ -1,6 +1,13 @@
+# git directory
+.git/
+# virtual environments
+env/
+.venv/
+# build related files
 *.pyc
 *.egg-info/
 build/
 dist/
-env/
-.venv/
+# Session file for vim
+Session.vim
+# vim: syntax=gitconfig :
