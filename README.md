@@ -11,4 +11,5 @@ Basic shell to begin a new project.
 
 1. Name your package; e.g., `agi`
 2. run `./name_package.sh agi`
-3. enjoy the power of computers
+3. run `./make-env.sh`
+4. `source ./enter-the-dojo.sh`
