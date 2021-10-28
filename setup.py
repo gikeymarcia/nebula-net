@@ -3,6 +3,7 @@ from pathlib import Path
 from setuptools import setup, find_packages
 
 README = Path(__file__).parent / "README.md"
+# TODO: read requirements.txt and feed it into install_requires
 
 
 # https://setuptools.readthedocs.io/en/latest/setuptools.html#basic-use

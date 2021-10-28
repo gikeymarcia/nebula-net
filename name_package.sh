@@ -24,7 +24,9 @@ if [ -n "$1" ]; then
 
     # clean ignored files + show directory state
     git clean -dxf
+    git add .
     git status
+    git diff --staged
     tree -a -I ".git"
 else
     echo "No name given. No changes will be made."

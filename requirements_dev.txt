@@ -2,6 +2,7 @@
 -r requirements.txt
 # testing
 pytest
+mypy
 
 # dev tooling
 pynvim
