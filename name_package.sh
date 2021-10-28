@@ -23,6 +23,7 @@ if [ -n "$1" ]; then
     mv -vf "$bumpversion" .bumpversion.cfg
 
     # clean ignored files + show directory state
+    git add "${name}"
     git clean -dxf
     git add .
     git status
