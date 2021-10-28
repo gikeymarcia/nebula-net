@@ -2,6 +2,8 @@
 # Mikey Garcia, @gikeymarcia
 # Meant to be sourced before returning to development
 
+set -e
+
 activate="./env/bin/activate"
 if [ -f "$activate" ]; then
     figlet "enter the dojo"
@@ -11,4 +13,5 @@ if [ -f "$activate" ]; then
     python -m pip list
 else
     echo "Could not find virtualenv activator at $activate"
+    exit 1
 fi
