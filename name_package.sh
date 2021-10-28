@@ -12,24 +12,26 @@ if [ -n "$1" ]; then
     # place package name into setup.py
     new_setup=$(mktemp)
     sed "s/package_name/${name}/" setup.py > "$new_setup"
-    mv -vf "$new_setup" setup.py
+    mv -f "$new_setup" setup.py
+
+    # place package name into .bumpversion.cfg
+    new_bumpversion=$(mktemp)
+    sed "s/package/${name}/" .bumpversion.cfg > "$new_bumpversion"
+    mv -f "$new_bumpversion" .bumpversion.cfg
 
     # rename module directory
     mv -v ./package "./${name}"
-
-    # place package name into .bumpversion.cfg
-    bumpversion=$(mktemp)
-    sed "s/package/${name}/" .bumpversion.cfg > "$bumpversion"
-    mv -vf "$bumpversion" .bumpversion.cfg
+    git add "${name}"
 
     # clean ignored files + show directory state
-    git add "${name}"
     git clean -dxf
-    git add .
-    git status
-    git diff .bumpversion.cfg
-    git diff setup.py
     tree -a -I ".git"
+    printf  "%s\n" "----------------------------------------"
+    git add .
+    git diff --staged -- .bumpversion.cfg
+    git diff --staged -- setup.py
+    printf  "%s\n" "----------------------------------------"
+    git status
 else
     echo "No name given. No changes will be made."
 fi
