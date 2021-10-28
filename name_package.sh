@@ -27,7 +27,8 @@ if [ -n "$1" ]; then
     git clean -dxf
     git add .
     git status
-    git diff --staged
+    git diff .bumpversion.cfg
+    git diff setup.py
     tree -a -I ".git"
 else
     echo "No name given. No changes will be made."
