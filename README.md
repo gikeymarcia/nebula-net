@@ -1,9 +1,10 @@
+TODO: conftest.py?
 # Python Project Template
 
 A basic skeleton to begin a new python project.
 
-If this is your first Python package I highly recommend you read the [Real 
-Python][realpython] article on the topic. Much of what they cover is within this 
+If this is your first Python package I highly recommend you read the [Real
+Python][realpython] article on the topic. Much of what they cover is within this
 skeleton.
 
 # Quickstart
@@ -17,8 +18,9 @@ cd my_project
 ./name_package.sh agi
 ./make-env.sh
 source ./enter-the-dojo.sh
-# protip: this alias rocks
-alias dojo="source ./enter-the-dojo.sh"
+# protip: these aliases rocks
+alias dojo="source ./.utils/enter-the-dojo.sh"
+alias mkenv="./.utils/make-env.sh"
 ```
 
 ### Features
@@ -39,9 +41,9 @@ alias dojo="source ./enter-the-dojo.sh"
 
 ## Building your Environment
 
-- Adding pip dependencies 
+- Adding pip dependencies
     - `requirements.txt` packages need at runtime
-        - make sure to include the same list in `setup.py`: 
+        - make sure to include the same list in `setup.py`:
           `install_requires=[]`
     - `requirements_dev.txt` packages need to develop
 
@@ -50,7 +52,7 @@ alias dojo="source ./enter-the-dojo.sh"
 - create build environment with `make-env.sh`
 - setup development env with `source ./enter-the-dojo.sh`
 
-- create package virtual environment with - 
+- create package virtual environment with -
 
 [bump]: <https://github.com/c4urself/bump2version#readme>
 "bump2version on GitHub"
