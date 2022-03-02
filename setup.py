@@ -15,7 +15,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/gikeymarcia/",
     author="Mikey Garcia",
-    author_email="gikeymarcia@gmail.com",
+    author_email="username@server.org",
     license="GPL-3.0",
     packages=find_packages(exclude="test"),
     install_requires=[],
