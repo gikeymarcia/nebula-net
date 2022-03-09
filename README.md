@@ -36,3 +36,15 @@ development environment with all of the packages from `./requirements.txt` and
 When you realize your project needs a new packages you add it to the respective
 requirements file and run `dojo req` to install the latest requirements. If
 you'd like a clean slate environment rebuild with `dojo new`.
+
+
+### Source of Truth
+
+This project is available on [GitHub][github] and [GitLab][gitlab]. Each push to
+`master` automatically goes to both so choose whichever platform you prefer.
+
+[gitlab]: <https://gitlab.com/gikeymarcia/super-python-project-template>
+"super-python-project-template @ GitLab"
+[github]: <https://github.com/gikeymarcia/super-python-project-template>
+"super-python-project-template @ GitHub"
+
