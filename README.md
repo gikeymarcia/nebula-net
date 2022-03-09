@@ -1,60 +1,38 @@
-TODO: conftest.py?
 # Python Project Template
 
-A basic skeleton to begin a new python project.
-
-If this is your first Python package I highly recommend you read the [Real
-Python][realpython] article on the topic. Much of what they cover is within this
-skeleton.
-
-# Quickstart
-
-Pick a name for your package, for example, `agi`
-
-```bash
-git clone $url my_project
-cd my_project
-
-./name_package.sh agi
-./make-env.sh
-source ./enter-the-dojo.sh
-# protip: these aliases rocks
-alias dojo="source ./.utils/enter-the-dojo.sh"
-alias mkenv="./.utils/make-env.sh"
-```
+Basic shell to begin a new project.
 
 ### Features
 
-- Automate the boilerplate! Get building now.
-    - environment setup
-    - continuous testing
-    - making builds for PyPi
-    - pushing releases
-- pre-configured `bump2version` [_docs_][bump]
-- pre-configured `setup.py`
-- pre-configured `requirements_dev.txt` with
-    - `pytest`
-    - `mypy`
-    - `black`
-    - `bump2version`
-    - `twine`
+- `bump2version`
+- `setup.py`
+- continuous testing with `dojo test`
+- quick development environment boot strap with `source ./tools.sh`
 
-## Building your Environment
+# Getting Going
 
-- Adding pip dependencies
-    - `requirements.txt` packages need at runtime
-        - make sure to include the same list in `setup.py`:
-          `install_requires=[]`
-    - `requirements_dev.txt` packages need to develop
+1. Name your package; e.g., `agi`
+2. Run `./scripts/name_package.sh agi`
+3. Run smart development boot strap `source ./tools.sh`
+4. Try out the new function `dojo` to work with your project's environment
+    - `dojo` -- see the help message
+    - `dojo new` -- delete old environment and recreate clean
+    - `dojo req` -- reinstall latest requirements from `./requirements_dev.txt`
+    - `dojo test` -- run continuous testing using pytest
+    - `dojo build` -- make a build and check for rendering on pypi
+    - `dojo build test` -- build project and release to **test.pypi.org**
+    - `dojo build pypi` -- build project and release to **pypi.org**
 
-### Using the Sripts
+## Useful Alias
 
-- create build environment with `make-env.sh`
-- setup development env with `source ./enter-the-dojo.sh`
+```bash
+export hax="source ./tools.sh"
+```
 
-- create package virtual environment with -
+After entering the project root run `hax` and you'll end up in a virtual
+development environment with all of the packages from `./requirements.txt` and
+`./requirements_dev.txt` installed.
 
-[bump]: <https://github.com/c4urself/bump2version#readme>
-"bump2version on GitHub"
-[realpython]: <https://realpython.com/pypi-publish-python-package/>
-"How to publish an Open-Source Python Package to PyPi"
+When you realize your project needs a new packages you add it to the respective
+requirements file and run `dojo req` to install the latest requirements. If
+you'd like a clean slate environment rebuild with `dojo new`.

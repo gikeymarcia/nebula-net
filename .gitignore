@@ -2,7 +2,6 @@
 .git/
 # virtual environments
 env/
-.venv/
 # build related files
 *.pyc
 *.egg-info/

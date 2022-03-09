@@ -4,7 +4,7 @@
 # Intended for use when beginning a new package
 # Will also clean the repo of ignored files
 
-# set -x
+set -x
 
 if [ -n "$1" ]; then
     name=$1
