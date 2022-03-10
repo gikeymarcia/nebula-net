@@ -5,14 +5,15 @@ function _rm_virtual_env () {
     local venv_dir="$1"
     _print_banner remove virtual env
     if [ -d  "$venv_dir" ]; then
-        rm -rfv "$venv_dir"
+        rm -rv "$venv_dir"
     fi
 }
 
 function _clean_environment() {
-    _rm_virtual_env "$1"
-    create_venv "$1"
-    enter_the_dojo "$1"
+    local venv_dir="$1"
+    _rm_virtual_env "$venv_dir"
+    create_venv "$venv_dir"
+    enter_the_dojo "$venv_dir"
 }
 
 function _enter_venv() {
@@ -104,16 +105,16 @@ function dojo () {
     elif [ "$1" == "new" ]; then
         _clean_environment "$virtual_env_dir"
     elif [ "$1" == "req" ]; then
-        _enter_venv "$venv_dir" && _install_requirements "$venv_dir"
+        _enter_venv "$virtual_env_dir" && _install_requirements "$virtual_env_dir"
     elif [ "$1" == "smart" ]; then
         _smart_loader "$virtual_env_dir"
     elif [ "$1" == "test" ]; then
         _continuous_testing "$project_dir"
     elif [ "$1" == "build" ]; then
         _build_project "$project_dir" "$virtual_env_dir" "$2"
+        # dojo build
+        # dojo build test
+        # dojo build pypi
     fi
-    # dojo build
-    # dojo build test
-    # dojo build pypi
 }
 
