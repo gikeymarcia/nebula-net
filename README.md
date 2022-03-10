@@ -1,6 +1,7 @@
-# Python Project Template
+# Super Python Project Template
 
-Basic shell to begin a new project.
+Starter template to quickly go from idea to fully functional Python3 virtual
+development environment. Includes hooks for continuous test driven development.
 
 ### Features
 
