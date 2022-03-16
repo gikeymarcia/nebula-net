@@ -15,8 +15,10 @@ development environment. Includes hooks for continuous test driven development.
 #### Debian & Ubuntu
 
 ```bash
-sudo apt install python3 python3-pip fd-find entr tar figlet lolcat
+sudo apt install -y python3 python3-pip fd-find entr tar figlet lolcat
 ```
+
+That above command can also be run with `./scripts/install_system_packages.sh`
 
 ## Getting Going
 
@@ -51,6 +53,12 @@ requirements file and run `dojo req` to install the latest requirements. If
 you'd like a clean slate environment rebuild with `dojo new`.
 
 
+## Going Deeper
+
+Although nascent, I've began outlining how this tool works in [the
+`/docs`][how]. I want to put the power in your hands to take what I've started
+and make it your own then pay it forward.
+
 ### Source of Truth
 
 This project is available on [GitHub][github] and [GitLab][gitlab]. Each push to
@@ -62,3 +70,5 @@ This project is available on [GitHub][github] and [GitLab][gitlab]. Each push to
 "super-python-project-template @ GitHub"
 [bump2version]: <https://github.com/c4urself/bump2version#usage>
 "c4urself/bump2version: Usage"
+[how]: <https://github.com/gikeymarcia/super-python-project-template/blob/master/docs/00-how_it_works.md>
+"How it Works"

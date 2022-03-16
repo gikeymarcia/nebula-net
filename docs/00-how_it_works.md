@@ -6,7 +6,7 @@ title: Documentation
 
 Hello and welcome to the party,
 
-This project template began by following along with the excellent Real Python
+This project template began with the excellent [Real Python][real python]
 guide on structuring a Python package. I implemented what I needed to get going
 and collected all of that tooling here.
 
@@ -20,24 +20,26 @@ the most routine tasks automated and rolled up into the `dojo` helper function.
 project="$HOME/new-idea"
 mkdir "$project"
 git clone https://github.com/gikeymarcia/super-python-project-template.git "$project"
+cd "$project"
+./scripts/name_package.sh automagic
+source ./tools.sh
+
+# add requirements
+echo "pydymenu==0.5.2" >> requirements.txt
+echo "Faker==13.3.2" >> requirements_dev.txt
+# install new requirements
+dojo req
 ```
 
 
 ## TODO
 
-The main missing component is a script to install the system packages needed for
-sourcing './tools.sh'. Initially I'm targeting Debian-based distros but will
-expand later.
+- Find requirements for other distros
 
-#### Debian-based Dependencies
-
-- `python3`
-- `python3-pip`
-- `fd-find`
-- `entr`
-- `figlet`
-- `lolcat`
-- `tar`
+- [ ] Arch
+- [ ] Fedora
 
 [bump2version]: <https://github.com/c4urself/bump2version#usage>
 "c4urself/bump2version: Usage"
+[real python]: <https://realpython.com/pypi-publish-python-package/#a-small-python-package>
+"Structuring your Python Project"
