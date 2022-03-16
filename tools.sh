@@ -13,7 +13,7 @@ function _clean_environment() {
     local venv_dir="$1"
     _rm_virtual_env "$venv_dir"
     create_venv "$venv_dir"
-    enter_the_dojo "$venv_dir"
+    _enter_the_dojo "$venv_dir"
 }
 
 function _enter_venv() {
@@ -33,7 +33,7 @@ function _install_requirements() {
     python -m pip list
 }
 
-function enter_the_dojo(){
+function _enter_the_dojo(){
     local venv_dir="$1"
     _enter_venv "$venv_dir"
     _install_requirements
@@ -54,7 +54,7 @@ function _smart_loader () {
     # If the virtual environment isn't configured create it, otherwise enter
     local venv_dir="$1"
     [ ! -d "$venv_dir" ] && create_venv "$venv_dir"
-    enter_the_dojo "$venv_dir"
+    _enter_the_dojo "$venv_dir"
 }
 
 function _build_project () {
