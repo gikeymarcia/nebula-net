@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Mikey Garcia, @gikeymarcia
-# Pass package name and update referecnes throughout the project
+# Pass package name and update references throughout the project
 # Intended for use when beginning a new package
 # Will also clean the repo of ignored files
 
