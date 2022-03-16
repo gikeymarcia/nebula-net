@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 # Mikey Garcia, @gikeymarcia
 
+function _bump_version () {
+    local part="$1" # major minor patch
+    if [ -n "$part" ]; then
+        _print_banner "Bump Package Version"
+        bump2version "$part"
+        git log --oneline -n 5
+    else
+        echo -e "Must provide which part to bump:\nmajor minor patch"
+    fi
+}
+
 function _rm_virtual_env () {
     local venv_dir="$1"
     _print_banner remove virtual env
@@ -28,6 +39,7 @@ function _enter_venv() {
 }
 
 function _install_requirements() {
+    _print_banner install development requirements
     python -m pip install --upgrade pip
     python -m pip install -r ./requirements_dev.txt
     python -m pip list
@@ -58,26 +70,28 @@ function _smart_loader () {
 }
 
 function _build_project () {
-    _clean_environment "$2"
+    local proj_dir="$1"
+    local venv_dir="$2"
+    local build_type="$3"
+    _clean_environment "$venv_dir"
     # remove old builds
-    rm -rv "${1}/build" && rm -rv "${1}/dist"
+    rm -rv "${proj_dir}/build" && rm -rv "${proj_dir}/dist"
     python ./setup.py sdist bdist_wheel     # build source archive and wheel
     tar tzf dist/*tar.gz                    # display tar contents
     twine check dist/*                      # check render on PyPi
 
-    if [ -z "$3" ]; then
+    if [ -z "$build_type" ]; then
         echo "choose either: 'test' or 'pypi' to upload build."
-    elif [ "$3" == "test" ]; then
+    elif [ "$build_type" == "test" ]; then
         # upload to test.pypi.org
         twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-    elif [ "$3" == "pypi" ]; then
+    elif [ "$build_type" == "pypi" ]; then
         # to upload to PyPi
         twine upload dist/*
     fi
 }
 
 function _continuous_testing() {
-    # TODO check for the apps and install if needed
     _print_banner "Test Driven Development!"
     python -m pytest -v "$1"
     while true; do
@@ -87,7 +101,7 @@ function _continuous_testing() {
 }
 
 clear
-# set important variables then use _smart_loader
+# Set important variables then use _smart_loader
 virtual_env_dir=$(realpath "./env")
 project_dir=$(realpath ".")
 _smart_loader "$virtual_env_dir"
@@ -99,6 +113,7 @@ function dojo () {
         echo req -- install requirements into current environment
         echo smart -- run the smart loader for quickest development
         echo test -- run continuous test driven development using pytest
+        echo bump PART -- bump version of package. Opts: major minor patch
         echo build -- make a build and check it for pypi render
         echo build test -- make a build and upload it to test.pypi.org
         echo build pypi -- make a build and upload it to pypi.org
@@ -110,9 +125,12 @@ function dojo () {
         _smart_loader "$virtual_env_dir"
     elif [ "$1" == "test" ]; then
         _continuous_testing "$project_dir"
+    elif [ "$1" == "bump" ]; then
+        local part="$2"     # opts: major minor patch
+        _bump_version "$part"
     elif [ "$1" == "build" ]; then
-        _build_project "$project_dir" "$virtual_env_dir" "$2"
-        # dojo build
+        local action="$2"   # opts: test pypi
+        _build_project "$project_dir" "$virtual_env_dir" "$action"
         # dojo build test
         # dojo build pypi
     fi

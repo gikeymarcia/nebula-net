@@ -5,21 +5,33 @@ development environment. Includes hooks for continuous test driven development.
 
 ### Features
 
-- `bump2version`
-- `setup.py`
-- continuous testing with `dojo test`
-- quick development environment boot strap with `source ./tools.sh`
+- Quick development environment boot strap with `source ./tools.sh`
+- Continuous test driven development with `dojo test`
+- Pre-configured `setup.py`
+- Pre-configured [`bump2version`][bump2version]
 
-# Getting Going
+## Pre-requisites
 
-1. Name your package; e.g., `agi`
-2. Run `./scripts/name_package.sh agi`
+#### Debian & Ubuntu
+
+```bash
+sudo apt install python3 python3-pip fd-find entr tar figlet lolcat
+```
+
+## Getting Going
+
+You come up with a great idea for implementing artificial general intelligence
+and decide you need to get coding quickly.
+
+1. Clone the template: `git clone https://github.com/gikeymarcia/super-python-project-template.git`
+2. Configure template with your package name `./scripts/name_package.sh agi`
 3. Run smart development boot strap `source ./tools.sh`
 4. Try out the new function `dojo` to work with your project's environment
     - `dojo` -- see the help message
     - `dojo new` -- delete old environment and recreate clean
     - `dojo req` -- reinstall latest requirements from `./requirements_dev.txt`
     - `dojo test` -- run continuous testing using pytest
+    - `dojo bump PART` -- bump package version number: __major minor patch__
     - `dojo build` -- make a build and check for rendering on pypi
     - `dojo build test` -- build project and release to **test.pypi.org**
     - `dojo build pypi` -- build project and release to **pypi.org**
@@ -48,4 +60,5 @@ This project is available on [GitHub][github] and [GitLab][gitlab]. Each push to
 "super-python-project-template @ GitLab"
 [github]: <https://github.com/gikeymarcia/super-python-project-template>
 "super-python-project-template @ GitHub"
-
+[bump2version]: <https://github.com/c4urself/bump2version#usage>
+"c4urself/bump2version: Usage"
