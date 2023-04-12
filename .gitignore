@@ -10,3 +10,5 @@ dist/
 # Session file for vim
 Session.vim
 # vim: syntax=gitconfig :
+docs/textual-repo/
+testing-ground/

@@ -1,0 +1,3 @@
+# https://github.com/Textualize/textual/releases
+# textual==0.19.1
+pytz

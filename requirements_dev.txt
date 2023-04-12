@@ -1,5 +1,8 @@
 # runtime dependencies
 -r requirements.txt
+# textual demos
+textual[dev]
+httpx
 # testing
 pytest
 ipdb
