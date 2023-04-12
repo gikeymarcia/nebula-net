@@ -8,7 +8,7 @@ README = Path(__file__).parent / "README.md"
 
 # https://setuptools.readthedocs.io/en/latest/setuptools.html#basic-use
 setup(
-    name="package_name",
+    name="nebula-net",
     version="0.1.0",
     description="Short description of the project",
     long_description=README.read_text(),
