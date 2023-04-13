@@ -1,8 +1,4 @@
----
-author: Mikey Garcia, @gikeymarcia
-date: 2023-04-13 03:31
-title: nebula-net
----
+#  nebula-net
 
 A python module to facilitate the creation and mangement of nebula network
 certificates.
@@ -36,73 +32,45 @@ certificates.
 
 - Be able to run this module in a script that'll produce an output appropriate
   for an ansible inventory
+- automatically create new certificates for nodes due to expire within the next
+  3 months
+    - later make this interval configurable
 
 ### Goal
 
 Produce an accompanying ansible role that can work with the inventory generated
 to:
 
--
+- install nebula client on each machine
+- install nebula using local IP so you can be at home and use the LAN address of
+  a machine (e.g., your laptop) `192.168.1.20` and set it up as a nebula node
+- update certificates on each node
 
-  ```bash
-  dir=$HOME/.local/bin
-  ansible-playbook -K -i $dir/nebula-net                    install-nebula.yml
-  ansible-playbook -K -i $dir/nebula-net                    update-certs.yml
+Envisioned usage is shown below
 
-  ansible-playbook -K -i $dir/nebula-net --limit homeserver add-local.yml
-  ```
+```bash
+dir=$HOME/.local/bin
+ansible-playbook -K -i $dir/nebula-net                    install-nebula.yml
+ansible-playbook -K -i $dir/nebula-net                    update-certs.yml
 
-That above command can also be run with `./scripts/install_system_packages.sh`
+ansible-playbook -K -i $dir/nebula-net --limit homeserver add-local.yml
+```
 
 ## Getting Going
 
-You come up with a great idea for implementing artificial general intelligence
-and decide you need to get coding quickly.
-
-1. Clone the template: `git clone https://github.com/gikeymarcia/super-python-project-template.git`
-2. Configure template with your package name `./scripts/name_package.sh agi`
-3. Run smart development boot strap `source ./tools.sh`
-4. Try out the new function `dojo` to work with your project's environment
-    - `dojo` -- see the help message
-    - `dojo new` -- delete old environment and recreate clean
-    - `dojo req` -- reinstall latest requirements from `./requirements_dev.txt`
-    - `dojo test` -- run continuous testing using pytest
-    - `dojo bump PART` -- bump package version number: __major minor patch__
-    - `dojo build` -- make a build and check for rendering on pypi
-    - `dojo build test` -- build project and release to **test.pypi.org**
-    - `dojo build pypi` -- build project and release to **pypi.org**
-
-## Useful Alias
-
-```bash
-export hax="source ./tools.sh"
-```
-
-After entering the project root run `hax` and you'll end up in a virtual
-development environment with all of the packages from `./requirements.txt` and
-`./requirements_dev.txt` installed.
-
-When you realize your project needs a new packages you add it to the respective
-requirements file and run `dojo req` to install the latest requirements. If
-you'd like a clean slate environment rebuild with `dojo new`.
-
-
-## Going Deeper
-
-Although nascent, I've began outlining how this tool works in [the
-`/docs`][how]. I want to put the power in your hands to take what I've started
-and make it your own then pay it forward.
+This project began with my [super-python-project-template][template] and you can
+[read more][how] to learn how it works.
 
 ### Source of Truth
 
 This project is available on [GitHub][github] and [GitLab][gitlab]. Each push to
 `master` automatically goes to both so choose whichever platform you prefer.
 
-[gitlab]: <https://gitlab.com/gikeymarcia/super-python-project-template>
-"super-python-project-template @ GitLab"
-[github]: <https://github.com/gikeymarcia/super-python-project-template>
-"super-python-project-template @ GitHub"
-[bump2version]: <https://github.com/c4urself/bump2version#usage>
-"c4urself/bump2version: Usage"
+[github]: <https://github.com/gikeymarcia/nebula-net>
+"nebula-net @ GitHub"
+[gitlab]: <https://gitlab.com/gikeymarcia/nebula-net>
+"nebula-net @ GitLab"
 [how]: <https://github.com/gikeymarcia/super-python-project-template/blob/master/docs/00-how_it_works.md>
 "How it Works"
+[template]: <https://gitlab.com/gikeymarcia/super-python-project-template>
+"super-python-project-template @ GitLab"
