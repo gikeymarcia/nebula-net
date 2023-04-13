@@ -1,56 +1,22 @@
----
-author: Mikey Garcia, @gikeymarcia
-date: 2023-04-13 03:31
-title: nebula-net
----
+# Super Python Project Template
 
-A python module to facilitate the creation and mangement of nebula network
-certificates.
+Starter template to quickly go from idea to fully functional Python3 virtual
+development environment. Includes hooks for continuous test driven development.
 
 ### Features
 
-- As-is this is in the early phases but is coming together quickly. Currently
-  you run the module in an empty folder
+- Quick development environment boot strap with `source ./tools.sh`
+- Continuous test driven development with `dojo test`
+- Pre-configured `setup.py`
+- Pre-configured [`bump2version`][bump2version]
 
-    ```bash
-    python -m nebula-net
-    ```
-  and it prompts you to name your network (if one doesn't exist) then creates
-  the root certificate. If a certificate exists it shows informatoin about it.
+## Pre-requisites
 
-### TODO
+#### Debian & Ubuntu
 
-- If no node is found, ask for input to generate first nebula node certificate
-- If nodes are found, be able to scan for them and display informatoin
-
-### mid-range
-
-- Be able to add a 'name','local_address', and 'nebula_address' for a
-  node
-
-  ```yaml
-  - name: "homeserver"
-    local_address: "192.168.1.12"
-    nebula_address: "10.0.0.30/24"
-  ```
-
-- Be able to run this module in a script that'll produce an output appropriate
-  for an ansible inventory
-
-### Goal
-
-Produce an accompanying ansible role that can work with the inventory generated
-to:
-
--
-
-  ```bash
-  dir=$HOME/.local/bin
-  ansible-playbook -K -i $dir/nebula-net                    install-nebula.yml
-  ansible-playbook -K -i $dir/nebula-net                    update-certs.yml
-
-  ansible-playbook -K -i $dir/nebula-net --limit homeserver add-local.yml
-  ```
+```bash
+sudo apt install -y python3 python3-pip fd-find entr tar figlet lolcat
+```
 
 That above command can also be run with `./scripts/install_system_packages.sh`
 
