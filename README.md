@@ -72,5 +72,5 @@ This project is available on [GitHub][github] and [GitLab][gitlab]. Each push to
 "nebula-net @ GitLab"
 [how]: <https://github.com/gikeymarcia/super-python-project-template/blob/master/docs/00-how_it_works.md>
 "How it Works"
-[template]: <https://gitlab.com/gikeymarcia/super-python-project-template>
+[template]: <https://github.com/gikeymarcia/super-python-project-template>
 "super-python-project-template @ GitLab"
